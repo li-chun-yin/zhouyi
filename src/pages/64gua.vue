@@ -1,7 +1,7 @@
 <template>
 	<view class="wrap">
 		<u-grid :col="4" class="gua-lists" v-for="group in items.groups" :key="group">
-			<view class="u-font-36">{{ group.title }}</view>
+			<view class="title">{{ group.title }}</view>
 			<u-line />
 			<u-grid-item v-for="item in group.lists " :key="item">
 				<navigator :url="'/pages/gua-desc?code='+item.code">
@@ -294,10 +294,18 @@ export default {
 </script>
 
 <style scoped lang="scss">
+	.title {
+		font-size: 36rpx;
+		line-height: 54rpx;
+	}
 	.gua-lists .shape {
 		font-size: 96rpx;
+		line-height: 120rpx;
+		text-align: center;
 	}
 	.gua-lists .name {
 		font-size: 64rpx;
+		line-height: 80rpx;
+		text-align: center;
 	}
 </style>

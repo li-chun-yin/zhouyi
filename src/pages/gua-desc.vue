@@ -1,6 +1,45 @@
 <template>
 	<view class="wrap">
-		gua ci
+			<u-row>
+				<u-col span="6">
+					<view>
+						<view class="name">卦名: {{ info.name }}({{ info.pin_yin }})</view>
+						<view class="shape">{{ info.shape }}</view>
+					</view>
+				</u-col>
+				<u-col span="6">
+					<view class="area">
+						<view class="title">卦辞</view>
+						<view class="ci">{{ info.gua_ci }}</view>
+					</view>
+					<view class="area">
+						<view class="title">爻辞</view>
+						<view class="yao" v-for="yao in info.yao_ci">
+							{{ yao.kind }}: {{ yao.desc }}
+						</view>
+					</view>
+				</u-col>
+				<u-col span="12">
+					<view class="area">
+						<view class="title">大象</view>
+						<view class="xiang">{{ info.da_xiang }}</view>
+					</view>
+					<view class="area">
+						<view class="title">小象</view>
+						<view class="xiang" v-for="xiang in info.xiao_xiang">
+							{{ xiang.kind }}: {{ xiang.desc }}
+						</view>
+					</view>
+				</u-col>
+				<u-col span="12">
+					<view class="area">
+						<view class="title">彖辞</view>
+						<view v-for="tuan in info.tuan_ci">
+							{{ tuan }}
+						</view>
+					</view>
+				</u-col>
+			</u-row>
 	</view>
 </template>
 
@@ -68,6 +107,8 @@ export default {
 		}
 	},
 	onLoad(e) {
+		this.info.yao_ci = this.info.yao_ci.reverse();
+		this.info.xiao_xiang = this.info.xiao_xiang.reverse();
 	},
 	onReachBottom(e){
 	},
@@ -79,10 +120,27 @@ export default {
 </script>
 
 <style scoped lang="scss">
-	.gua-lists .shape {
-		font-size: 96rpx;
+	.shape {
+		color: red;
+		font-size: 384rpx;
+		line-height: 480rpx;
 	}
-	.gua-lists .name {
-		font-size: 64rpx;
+	.name {
+		font-size: 36rpx;
+		text-align: center;
+		line-height: 36rpx;
+	}
+	.xiang {
+		color: blue;
+	}
+	.ci,.yao {
+		color: red;
+	}
+	.area {
+		padding: 5rpx 0;
+		line-height: 45rpx;
+		.title {
+			font-weight: bold;
+		}
 	}
 </style>
