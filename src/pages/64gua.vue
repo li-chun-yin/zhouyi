@@ -1,9 +1,9 @@
 <template>
 	<view class="wrap">
-		<u-grid :col="4" class="gua-lists" v-for="group in items.groups" :key="group">
+		<u-grid :col="4" class="gua-lists" v-for="group, index in items.groups" :key="index">
 			<view class="title">{{ group.title }}</view>
 			<u-line />
-			<u-grid-item v-for="item in group.lists " :key="item">
+			<u-grid-item v-for="item, index in group.lists " :key="index">
 				<navigator :url="'/pages/gua-desc?code='+item.code">
 					<view class="shape">{{ item.shape }}</view>
 					<view class="name">{{ item.name }}</view>

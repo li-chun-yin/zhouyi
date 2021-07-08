@@ -10,11 +10,11 @@
 				<u-col span="6">
 					<view class="area">
 						<view class="title">卦辞</view>
-						<view class="ci">{{ info.gua_ci }}</view>
+						<view class="ci" v-for="gua,index in info.gua_ci" :key="index">{{ gua }}</view>
 					</view>
 					<view class="area">
 						<view class="title">爻辞</view>
-						<view class="yao" v-for="yao in info.yao_ci">
+						<view class="yao" v-for="(yao, index) in info.yao_ci" :key="index">
 							{{ yao.kind }}: {{ yao.desc }}
 						</view>
 					</view>
@@ -26,7 +26,7 @@
 					</view>
 					<view class="area">
 						<view class="title">小象</view>
-						<view class="xiang" v-for="xiang in info.xiao_xiang">
+						<view class="xiang" v-for="xiang, index in info.xiao_xiang" :key="index">
 							{{ xiang.kind }}: {{ xiang.desc }}
 						</view>
 					</view>
@@ -34,7 +34,7 @@
 				<u-col span="12">
 					<view class="area">
 						<view class="title">彖辞</view>
-						<view v-for="tuan in info.tuan_ci">
+						<view v-for="tuan, index in info.tuan_ci" :key="index">
 							{{ tuan }}
 						</view>
 					</view>
@@ -48,72 +48,30 @@ export default {
 	data() {
 		return {
 			info: {
-				shape: '䷀',
-				code: '111111',
-				pin_yin: 'qián',
-				name: '乾',
-				gua_ci: '元、亨、利、貞。',
-				yao_ci: [{
-					kind: '初九',
-					desc: '潜龙勿用。'
-				},{
-					kind: '九二',
-					desc: '见龙在田，利见大人。'
-				},{
-					kind: '九三',
-					desc: '君子终日乾乾，夕惕若；厉，无咎。'
-				},{
-					kind: '九四',
-					desc: '或跃在渊，无咎。'
-				},{
-					kind: '九五',
-					desc: '飞龙在天，利见大人。'
-				},{
-					kind: '上九',
-					desc: '亢龙，有悔。'
-				},{
-					kind: '用九',
-					desc: '见群龙无首，吉。'
-				}],
-				da_xiang: '天行健，君子以自强不息。',
-				xiao_xiang: [{
-					kind: '初九',
-					desc: '潜龙勿用，阳在下也。'
-				},{
-					kind: '九二',
-					desc: '见龙在田，德施普也。'
-				},{
-					kind: '九三',
-					desc: '终日乾乾，反复道也。'
-				},{
-					kind: '九四',
-					desc: '或跃在渊，进无咎也。'
-				},{
-					kind: '九五',
-					desc: '飞龙在天，大人造也。'
-				},{
-					kind: '上九',
-					desc: '亢龙有悔，盈不可久也。'
-				},{
-					kind: '用九',
-					desc: '用九，天德不可为首也。'
-				}],
-				'tuan_ci': [
-					'大哉乾元，萬物資始，乃統天。雲行雨施，品物流形，大明終始，六位時成。',
-					'時乘六龍以御天，乾道變化，各正性命，保合大和〈一作太和〉，乃利貞。',
-					'首出庶物，萬國咸寧。'
-				]
+				shape: '',
+				code: '',
+				pin_yin: '',
+				name: '',
+				gua_ci: '',
+				yao_ci: [],
+				da_xiang: '',
+				xiao_xiang: [],
+				'tuan_ci': []
 			},
 		}
 	},
 	onLoad(e) {
-		this.info.yao_ci = this.info.yao_ci.reverse();
-		this.info.xiao_xiang = this.info.xiao_xiang.reverse();
+		this.loadData(e)
 	},
 	onReachBottom(e){
 	},
 	methods:{
-		loadData(){
+		loadData(e){
+			const data = require('@/static/gua/' + e.code + '.json')
+			this.info	=  data;
+			console.log(data)
+			this.info.yao_ci = this.info.yao_ci.reverse()
+			this.info.xiao_xiang = this.info.xiao_xiang.reverse()
 		}
 	}
 };
