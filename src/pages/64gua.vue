@@ -3,7 +3,7 @@
 		<u-grid :col="4" class="gua-lists" v-for="group, index in items.groups" :key="index">
 			<view class="title">{{ group.title }}</view>
 			<u-line />
-			<u-grid-item v-for="item, index in group.lists " :key="index">
+			<u-grid-item v-for="item, key in group.lists " :key="key">
 				<navigator :url="'/pages/gua-desc?code='+item.code">
 					<view class="shape">{{ item.shape }}</view>
 					<view class="name">{{ item.name }}</view>
