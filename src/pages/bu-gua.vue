@@ -1,21 +1,17 @@
 <template>
 	<view class="wrap">
 			<u-row>
-				<u-col span="12">
-					<view>
-						<view class="name">卦名: {{ info.name }}({{ info.pin_yin }})</view>
-					</view>
-					<view class="area">
-						<text class="title">卦辞：</text>
-						<text class="ci" v-for="gua,index in info.gua_ci" :key="index">{{ gua }}</text>
-					</view>
-				</u-col>
 				<u-col span="6">
 					<view>
+						<view class="name">卦名: {{ info.name }}({{ info.pin_yin }})</view>
 						<view class="shape">{{ info.shape }}</view>
 					</view>
 				</u-col>
 				<u-col span="6">
+					<view class="area">
+						<view class="title">卦辞</view>
+						<view class="ci" v-for="gua,index in info.gua_ci" :key="index">{{ gua }}</view>
+					</view>
 					<view class="area">
 						<view class="title">爻辞</view>
 						<view class="yao" v-for="(yao, index) in info.yao_ci" :key="index">
@@ -94,7 +90,7 @@ export default {
 	.name {
 		font-size: 36rpx;
 		text-align: center;
-		line-height: 72rpx;
+		line-height: 36rpx;
 	}
 	.xiang {
 		color: blue;

@@ -1,16 +1,13 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/64gua",
-			"style": {
-				"navigationStyle": "custom"
-			}
+			"path": "pages/64gua"
 		},
 		{
-			"path": "pages/gua-desc",
-			"style": {
-				"navigationStyle": "custom"
-			}
+			"path": "pages/gua-desc"
+		},
+		{
+			"path": "pages/bu-gua"
 		}
 	],
 	"globalStyle": {
@@ -23,7 +20,15 @@
 		"color": "#7A7E83",
 		"selectedColor": "#007AFF",
 		"borderStyle": "black",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#F8F8F8",
+		"list": [{
+				"pagePath": "pages/64gua",
+				"text": "六十四卦"
+			},
+			{
+				"pagePath": "pages/bu-gua",
+				"text": "卜一卦"
+		}]
 	},
 	"easycom": {
 		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
