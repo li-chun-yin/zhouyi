@@ -44,21 +44,20 @@
 </template>
 
 <script>
-const init_info = {
-	shape: '',
-	code: '',
-	pin_yin: '',
-	name: '',
-	gua_ci: '',
-	yao_ci: [],
-	da_xiang: '',
-	xiao_xiang: [],
-	'tuan_ci': []
-}
 export default {
 	data() {
 		return {
-			info: init_info,
+			info: {
+				shape: '',
+				code: '',
+				pin_yin: '',
+				name: '',
+				gua_ci: '',
+				yao_ci: [],
+				da_xiang: '',
+				xiao_xiang: [],
+				'tuan_ci': []
+			},
 		}
 	},
 	onLoad(e) {
@@ -90,7 +89,7 @@ export default {
 	.name {
 		font-size: 36rpx;
 		text-align: center;
-		line-height: 36rpx;
+		line-height: 72rpx;
 	}
 	.xiang {
 		color: blue;
